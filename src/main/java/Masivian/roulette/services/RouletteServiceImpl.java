@@ -18,13 +18,17 @@ public class RouletteServiceImpl implements RouletteService{
     }
 
     @Override
-    public void create(Roulette roulette) {
-        rouletteRepository.create(roulette);
-    }
-
-    @Override
     public List<Roulette> getAll() {
         return rouletteRepository.getAll();
     }
-    
+
+    @Override
+    public Roulette findById(int id) {
+        return rouletteRepository.findById(id);
+    }
+
+    @Override
+    public void save(Roulette roulette) {
+        rouletteRepository.save(roulette);
+    }
 }

@@ -4,7 +4,6 @@ import Masivian.roulette.model.enums.Color;
 import Masivian.roulette.model.enums.State;
 import Masivian.roulette.model.interfaces.GameBehaviors;
 import java.io.Serializable;
-import java.util.List;
 import lombok.Data;
 
 @Data
@@ -16,6 +15,7 @@ public class Roulette implements GameBehaviors, Serializable{
     
     public Roulette (int id){
         this.id=id;
+        this.state=State.Closed;
     }
 
     @Override
@@ -26,5 +26,15 @@ public class Roulette implements GameBehaviors, Serializable{
     @Override
     public void close() {
         this.state=State.Closed;
+    }
+
+    @Override
+    public void findWinner() {
+        this.winnerNumber = (int)(Math.random()*36);
+        if (this.winnerNumber%2 == 0){
+            this.winnerColor=Color.Red;
+        } else {
+            this.winnerColor=Color.Black;
+        }
     }
 }

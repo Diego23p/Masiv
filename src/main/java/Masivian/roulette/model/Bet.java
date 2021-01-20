@@ -1,17 +1,19 @@
 package Masivian.roulette.model;
 
 import Masivian.roulette.model.interfaces.BetBehaviors;
+import java.io.Serializable;
+import lombok.Data;
 
-public abstract class Bet implements BetBehaviors{
-    private Roulette roulette;
+@Data
+public abstract class Bet implements BetBehaviors, Serializable{
+    private int id;
+    private int rouletteId;
     private double amountOfMoney;
     private String userId;
-    public Bet(Roulette roulette, double amountOfMoney, String userId){
-        this.roulette=roulette;
+    
+    public Bet(int rouletteId, double amountOfMoney, String userId){
+        this.rouletteId=rouletteId;
         this.amountOfMoney=amountOfMoney;
         this.userId=userId;
-    }
-    public double getAmountOfMoney (){
-        return amountOfMoney;
     }
 }
